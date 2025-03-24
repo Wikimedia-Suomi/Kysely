@@ -1,0 +1,298 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% trans "Rakennettu perintömme -kysely" %}</title>
+
+  <!-- Bootstrap 5 (CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    crossorigin="anonymous"
+  />
+</head>
+<body class="bg-light">
+
+<!-- NAVIGAATIOPALKKI kielivalinnalla -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">{% trans "Rakennettu perintömme -kysely" %}</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="{% trans 'Toggle navigation' %}"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form action="{% url 'set_language' %}" method="post" class="d-flex ms-auto">
+        {% csrf_token %}
+        <label for="langSelect" class="visually-hidden">{% trans "Valitse kieli" %}</label>
+        <select name="language" id="langSelect" class="form-select me-2">
+          <option value="fi">Suomi</option>
+          <option value="sv">Svenska</option>
+          <option value="en">English</option>
+        </select>
+        <button type="submit" class="btn btn-outline-primary">
+          {% trans "Vaihda kieltä" %}
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- PÄÄSISÄLTÖ -->
+<div class="container py-5">
+  
+  <!-- Sivun otsikko -->
+  <div class="text-center mb-5">
+    <h1 class="display-5">{% trans "Rakennettu perintömme -kysely" %}</h1>
+    <h4 class="text-muted">
+      {% trans "Kerro meille rakennuksesta, joka on sinulle tärkeä." %}
+    </h4>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-body p-4">
+          <form method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+
+            <!-- Mahdolliset yleiset lomakkeen virheet -->
+            {% if form.non_field_errors %}
+              <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+              </div>
+            {% endif %}
+
+            <!-- HUOM! Onko rakennus -kysymys poistettu kokonaan käyttöliittymästä -->
+
+            <!-- DESCRIPTION -->
+            <div class="mb-3">
+              <strong>
+                <label for="{{ form.description.id_for_label }}" class="form-label">
+                  {{ form.description.label }}
+                </label>
+              </strong>
+              <textarea
+                id="{{ form.description.id_for_label }}"
+                name="{{ form.description.name }}"
+                class="form-control"
+                rows="3"
+              >{{ form.description.value|default_if_none:"" }}</textarea>
+              {% if form.description.help_text %}
+                <div class="form-text">{{ form.description.help_text }}</div>
+              {% endif %}
+              <div class="text-danger small">
+                {{ form.description.errors }}
+              </div>
+            </div>
+
+            <!-- USAGE (muutetaan monivalinta checkboxeiksi) -->
+            <div class="mb-3">
+              <strong>
+                <label class="form-label">
+                  {{ form.usage.label }}
+                </label>
+              </strong>
+              {% comment %}
+                Tässä oletetaan, että form.usage.value voi sisältää useita valittuja arvoja,
+                esim. ['private', 'empty'], tai merkkijonon 'private,empty' - riippuen
+                miten tallennus on toteutettu. Tästä syystä tarkistetaan,
+                onko choice_value "in" usage.value.
+              {% endcomment %}
+              {% for choice_value, choice_label in form.usage.field.choices %}
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    name="usage" 
+                    id="id_usage_{{ forloop.counter }}"
+                    value="{{ choice_value }}"
+                    class="form-check-input"
+                  />
+                  <label class="form-check-label" for="id_usage_{{ forloop.counter }}">
+                    {{ choice_label }}
+                  </label>
+                </div>
+              {% endfor %}
+              <div class="text-danger small">
+                {{ form.usage.errors }}
+              </div>
+            </div>
+
+            <!-- MUNICIPALITY -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_municipality" class="form-label">
+                  {{ form.municipality.label }}
+                </label>
+              </strong>
+              <input
+                type="text"
+                id="id_municipality"
+                name="municipality"
+                value="{{ form.municipality.value|default_if_none:"" }}"
+                class="form-control"
+              />
+              <div class="text-danger small">
+                {{ form.municipality.errors }}
+              </div>
+            </div>
+
+            <!-- OSOITE -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_address" class="form-label">
+                  {{ form.address.label }}
+                </label>
+              </strong>
+              <textarea
+                id="id_address"
+                name="address"
+                rows="3"
+                class="form-control"
+              >{{ form.address.value|default_if_none:"" }}</textarea>
+              <div class="text-danger small">
+                {{ form.address.errors }}
+              </div>
+            </div>
+
+            <!-- COORDINATES -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_coordinates" class="form-label">
+                  {{ form.coordinates.label }}
+                </label>
+              </strong>
+              <input
+                type="text"
+                id="id_coordinates"
+                name="coordinates"
+                value="{{ form.coordinates.value|default_if_none:"" }}"
+                class="form-control"
+              />
+              <div class="text-danger small">
+                {{ form.coordinates.errors }}
+              </div>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_image" class="form-label">
+                  {{ form.image.label }}
+                </label>
+              </strong>
+              <input
+                type="file"
+                id="id_image"
+                name="image"
+                class="form-control"
+              />
+              <div class="text-danger small">
+                {{ form.image.errors }}
+              </div>
+            </div>
+
+            <!-- IMAGE COPYRIGHT -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_image_copyright"
+                       class="form-label">
+                  {{ form.image_copyright.label }}
+                </label>
+              </strong>
+              <input
+                type="text"
+                id="id_image_copyright"
+                name="image_copyright"
+                value="{{ form.image_copyright.value|default_if_none:"" }}"
+                class="form-control"
+              />
+              <div class="text-danger small">
+                {{ form.image_copyright.errors }}
+              </div>
+            </div>
+
+            <!-- INFO LINK -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_info_link" class="form-label">
+                  {{ form.info_link.label }}
+                </label>
+              </strong>
+              <input
+                type="url"
+                id="id_info_link"
+                name="info_link"
+                value="{{ form.info_link.value|default_if_none:"" }}"
+                class="form-control"
+              />
+              <div class="text-danger small">
+                {{ form.info_link.errors }}
+              </div>
+            </div>
+
+            <!-- LÄHETTÄJÄN NIMI JA YHTEYSTIEDOT -> TEXTAREA -->
+            <div class="mb-3">
+              <strong>
+                <label for="id_sender_info" class="form-label">
+                  {{ form.sender_info.label }}
+                </label>
+              </strong>
+              <textarea
+                id="id_sender_info"
+                name="sender_info"
+                rows="3"
+                class="form-control"
+              >{{ form.sender_info.value|default_if_none:"" }}</textarea>
+              <div class="text-danger small">
+                {{ form.sender_info.errors }}
+              </div>
+            </div>
+
+            <!-- CONSENT (checkbox) -->
+            <div class="form-check mb-4">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="{{ form.consent.id_for_label }}"
+                name="{{ form.consent.name }}"
+                {% if form.consent.value %}checked{% endif %}
+              />
+              <label for="{{ form.consent.id_for_label }}" class="form-check-label">
+                {{ form.consent.label }}
+              </label>
+              <div class="text-danger small">
+                {{ form.consent.errors }}
+              </div>
+            </div>
+
+            <!-- Lähetä-painike -->
+            <button type="submit" class="btn btn-success w-100">
+              {% trans "Lähetä" %}
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  crossorigin="anonymous"
+></script>
+</body>
+</html>
+
