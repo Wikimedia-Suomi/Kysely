@@ -5,10 +5,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '...'  # oman projektin salainen avain
+SECRET_KEY = '...'  
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['wlmkysely.toolforge.org','127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -23,7 +23,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.locale.LocaleMiddleware',  
+#    'django.middleware.locale.LocaleMiddleware',  
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -56,15 +56,15 @@ LANGUAGE_QUERY_PARAMETER = 'lang'
 
 # 1) Ota i18n ja l10n käyttöön
 LANGUAGE_CODE = 'fi'   # ensisijainen kieli
-USE_I18N = True
+#USE_I18N = True
 #USE_L10N = True
 #USE_TZ = True
 
 # 2) Määrittele tuetut kielet
 LANGUAGES = [
     ('fi', 'Finnish'),
-    ('sv', 'Swedish'),
-    ('en', 'English'),
+#   ('sv', 'Swedish'),
+#    ('en', 'English'),
 ]
 
 # 3) Määrittele, mistä .po-tiedostot haetaan

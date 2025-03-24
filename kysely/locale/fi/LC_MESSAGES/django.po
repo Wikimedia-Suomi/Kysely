@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-21 01:45-0500\n"
-"PO-Revision-Date: 2025-01-01 12:00+0000\n"
+"POT-Creation-Date: 2025-03-24 12:00+0000\n"
+"PO-Revision-Date: 2025-03-24 12:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "Language: fi\n"
@@ -11,109 +11,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: survey_app/forms.py:23 survey_app/models.py:13
-msgid "Onko rakennus olemassa (Kyllä/Ei)?"
-msgstr "Onko rakennus olemassa (Kyllä/Ei)?"
+#: survey_app/models.py:6
+msgid "Kohteen lyhyt kuvaus. Miksi kohde on sinulle tärkeä?"
+msgstr "Kohteen lyhyt kuvaus. Miksi kohde on sinulle tärkeä?"
 
-#: survey_app/forms.py:24 survey_app/models.py:19
-msgid "Kohteen lyhyt kuvaus. Miksi rakennus on sinulle tärkeä?"
-msgstr "Kohteen lyhyt kuvaus. Miksi rakennus on sinulle tärkeä?"
+#: survey_app/models.py:11
+msgid "Kohteen käyttötarkoitus (monivalinta)"
+msgstr "Kohteen käyttötarkoitus (monivalinta)"
 
-#: survey_app/forms.py:25 survey_app/models.py:35
-msgid "Rakennuksen käyttötarkoitus"
-msgstr "Rakennuksen käyttötarkoitus"
-
-#: survey_app/forms.py:26 survey_app/models.py:42
+#: survey_app/models.py:18
 msgid "Kunta"
 msgstr "Kunta"
 
-#: survey_app/forms.py:27 survey_app/models.py:49
-msgid "Rakennuksen osoite"
-msgstr "Rakennuksen osoite"
-
-#: survey_app/forms.py:28 survey_app/models.py:56
-msgid "Koordinaatit (valinnainen)"
-msgstr "Koordinaatit (valinnainen)"
-
-#: survey_app/forms.py:29 survey_app/models.py:63
-msgid "Rakennuksen kuva (valinnainen)"
-msgstr "Rakennuksen kuva (valinnainen)"
-
-#: survey_app/forms.py:30 survey_app/models.py:76
-msgid "Linkki verkkosivuun (valinnainen)"
-msgstr "Linkki verkkosivuun (valinnainen)"
-
-#: survey_app/forms.py:31 survey_app/models.py:83
-msgid "Lähettäjän nimi ja yhteystiedot"
-msgstr "Lähettäjän nimi ja yhteystiedot"
-
-#: survey_app/forms.py:32 survey_app/models.py:89
-msgid "Annan suostumuksen julkistaa tiedot"
-msgstr "Annan suostumuksen julkistaa tiedot"
-
-#: survey_app/forms.py:35
-msgid "Kerro, miksi rakennus on säilyttämisen arvoinen."
-msgstr "Kerro, miksi rakennus on säilyttämisen arvoinen."
-
-#: survey_app/forms.py:41
-msgid "Tietojen julkaisuun on annettava suostumus."
-msgstr "Tietojen julkaisuun on annettava suostumus."
-
-#: survey_app/models.py:7
-msgid "Kyllä"
-msgstr "Kyllä"
-
-#: survey_app/models.py:8
-msgid "Ei"
-msgstr "Ei"
-
-#: survey_app/models.py:25
-msgid "Yksityisessä käytössä (koti, vapaa-ajan asunto)"
-msgstr "Yksityisessä käytössä (koti, vapaa-ajan asunto)"
-
-#: survey_app/models.py:26
-msgid "Julkisessa käytössä"
-msgstr "Julkisessa käytössä"
-
-#: survey_app/models.py:27
-msgid "Rakennus on avoinna yleisölle (kahvila, museo)"
-msgstr "Rakennus on avoinna yleisölle (kahvila, museo)"
-
-#: survey_app/models.py:28
-msgid "Rakennusta voi katsoa ulkoa (kirkko, majakka, ulkomuseo)"
-msgstr "Rakennusta voi katsoa ulkoa (kirkko, majakka, ulkomuseo)"
-
-#: survey_app/models.py:29
-msgid "Rakennus on tyhjillään"
-msgstr "Rakennus on tyhjillään"
+#: survey_app/models.py:24
+msgid "Kohteen katuosoite"
+msgstr "Kohteen katuosoite"
 
 #: survey_app/models.py:30
-msgid "EOS (ei osaa sanoa)"
-msgstr "EOS (ei osaa sanoa)"
+msgid "Koordinaatit tai paikkalinkki karttaan (valinnainen)"
+msgstr "Koordinaatit tai paikkalinkki karttaan (valinnainen)"
 
-#: survey_app/models.py:70
+#: survey_app/models.py:36
+msgid "Kuva kohteesta"
+msgstr "Kuva kohteesta"
+
+#: survey_app/models.py:42
 msgid "Kuvan tekijänoikeustiedot (valinnainen)"
 msgstr "Kuvan tekijänoikeustiedot (valinnainen)"
 
-#: survey_app/models.py:95
-#, python-brace-format
-msgid "Survey ID {id} - {desc}"
-msgstr "Survey ID {id} - {desc}"
+#: survey_app/models.py:48
+msgid "Linkki verkkosivuun (valinnainen)"
+msgstr "Linkki verkkosivuun (valinnainen)"
 
-#: survey_app/templates/survey_app/survey_form.html:8
-#: survey_app/templates/survey_app/survey_form.html:11
-msgid "Rakennuskysely"
-msgstr "Rakennuskysely"
+#: survey_app/models.py:54
+msgid "Lähettäjän nimi ja yhteystiedot (ei julkaista)"
+msgstr "Lähettäjän nimi ja yhteystiedot (ei julkaista)"
 
-#: survey_app/templates/survey_app/survey_form.html:17
-msgid "Lähetä"
-msgstr "Lähetä"
+#: survey_app/models.py:60
+msgid "Annan suostumuksen julkistaa tiedot"
+msgstr "Annan suostumuksen julkistaa tiedot"
 
-#: survey_app/templates/survey_app/survey_thanks.html:8
-#: survey_app/templates/survey_app/survey_thanks.html:11
+#: survey_app/models.py:8
+msgid "EOS (ei osaa sanoa)"
+msgstr "EOS (ei osaa sanoa)"
+
+#: survey_app/models.py:14
+msgid "Rakennus on tyhjillään"
+msgstr "Rakennus on tyhjillään"
+
+#: survey_app/models.py:10
+msgid "Julkisessa käytössä"
+msgstr "Julkisessa käytössä"
+
+#: survey_app/models.py:12
+msgid "Yksityisessä käytössä (koti, vapaa-ajan asunto, piha tms.)"
+msgstr "Yksityisessä käytössä (koti, vapaa-ajan asunto, piha tms.)"
+
+#: survey_app/models.py:13
+msgid "Kohde on avoinna yleisölle (kahvila, asuinalue, puisto tms.)"
+msgstr "Kohde on avoinna yleisölle (kahvila, asuinalue, puisto tms.)"
+
+#: survey_app/models.py:14
+msgid "Kohdetta voi katsoa ulkoa"
+msgstr "Kohdetta voi katsoa ulkoa"
+
+#: survey_app/templates/survey_thanks.html:5
 msgid "Kiitos osallistumisesta!"
 msgstr "Kiitos osallistumisesta!"
 
-#: survey_app/templates/survey_app/survey_thanks.html:12
+#: survey_app/templates/survey_thanks.html:6
 msgid "Lomakkeen tiedot tallennettiin onnistuneesti."
 msgstr "Lomakkeen tiedot tallennettiin onnistuneesti."
+
+#: survey_app/templates/survey_thanks.html:9
+msgid "Lisää uusi kohde"
+msgstr "Lisää uusi kohde"
+
+#: survey_app/templates/base.html or navigation (esim.)
+msgid "Vaihda kieltä"
+msgstr "Vaihda kieltä"
+
+#: survey_app/templates/base.html or navigation
+msgid "Valitse kieli"
+msgstr "Valitse kieli"
+

@@ -3,19 +3,16 @@ from django import forms
 from .models import Survey
 
 class SurveyForm(forms.ModelForm):
-    # Muutetaan usage-lomakekenttä MultipleChoiceFieldiksi,
-    # jossa widget on CheckboxSelectMultiple:
     usage = forms.MultipleChoiceField(
         choices=Survey.USAGE_CHOICES,
         required=False,
         widget=forms.CheckboxSelectMultiple,
-        label="Rakennuksen käyttötarkoitus (monivalinta)"
+        label="Kohteen käyttötarkoitus (monivalinta)"
     )
 
     class Meta:
         model = Survey
         fields = [
-            # Poistettu 'building'
             'description',
             'usage',
             'municipality',
@@ -28,26 +25,23 @@ class SurveyForm(forms.ModelForm):
             'consent',
         ]
         labels = {
-            'description': "Kohteen lyhyt kuvaus. Miksi rakennus on tärkeä?",
+            'description': "Kohteen lyhyt kuvaus. Miksi kohde on sinulle tärkeä?",
             'municipality': "Kunta",
-            'address': "Rakennuksen osoite",
-            'coordinates': "Koordinaatit (valinnainen)",
-            'image': "Rakennuksen kuva (valinnainen)",
+            'address': "Kohteen katuosoite",
+            'coordinates': "Koordinaatit tai paikkalinkki karttaan (valinnainen)",
+            'image': "Kuva kohteesta",
             'info_link': "Linkki verkkosivuun (valinnainen)",
-            'sender_info': "Lähettäjän nimi ja yhteystiedot",
+            'sender_info': "Lähettäjän nimi ja yhteystiedot (ei julkaista)",
             'consent': "Annan suostumuksen julkistaa tiedot",
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Jos instanssissa on usage-arvo (esim. "private,open"),
-        # parsitaan se listaksi, jotta checkboxit täsmäävät:
         if self.instance and self.instance.usage:
             self.initial['usage'] = self.instance.usage.split(',')
 
     def clean_usage(self):
         usage_list = self.cleaned_data.get('usage', [])
-        # Tallennetaan tietokantaan pilkulla erotettuna merkkijonona
         return ','.join(usage_list)
 
     def clean_consent(self):
