@@ -1,4 +1,4 @@
-# Tietosuojaseloste: Wikimedia Suomi ry:n Rakennettu perintömme -kysely
+# Wikimedia Suomi ry:n Rakennettu perintömme -kyselyn tietosuojaseloste.
 
 ## Käsittelyn tarkoitus
 
