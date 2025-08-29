@@ -23,9 +23,13 @@ Emme julkaise henkilötietoja emmekä luovuta niitä eteenpäin.
 
 ## Milloin tiedot poistetaan?
 
-Säilytämme henkilötietoja, kunnes tietojen keruu Rakennettu perintömme -kyselyllä päättyy 31.12.2025. Kerätyistä tiedoista julkaisemme koosteen jossa tietoa keräyksessä
-siitä millaisia kohteita kyselyssä saatiin sellaisessa muodossa ettei se sisällä henkilötietoja tai yksityisiä tietoja. Lisäksi tallennamme Wikidataan ne kohteet 
-jotka otettiin mukaan paikoiksi Wiki Loves Monuments -kilpailuun.
+Säilytämme henkilötietoja, kunnes tietojen keruu Rakennettu perintömme -kyselyllä päättyy 31.12.2025. Tätä ennen julkaisemme kerätyistä tiedoista koosteen jossa 
+tietoa keräyksessä siitä millaisia kohteita kyselyssä saatiin sellaisessa muodossa ettei se sisällä henkilötietoja tai yksityisiä tietoja. 
+Lisäksi tallennamme Wikidataan ne kohteet jotka otettiin mukaan paikoiksi Wiki Loves Monuments -kilpailuun.
+
+## Tietojen poistopyynnöt
+
+Tietoja voi pyytää poistettavaksi olemalla yhteydessä Kimmo Virtaseen
 
 ## Yhteyshenkilö
 
